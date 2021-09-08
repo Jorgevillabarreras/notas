@@ -1,0 +1,29 @@
+Enumerar NFS
+================================================
+
+Nmap Scipt
+======================================================
+sudo nmap --script nfs-ls,nfs-showmount,nfs-statfs $IP
+
+
+Ensenar mount que podemos montar
+======================================================
+sudo showmount -e $IP
+
+
+Montar Mount
+========================================================
+mkdir -p /mnt/home/bob
+mount -t nfs <NFS SERVER IP>:/home/bob /mnt/home/bob -o nolock
+cd /mnt/home/bob
+
+
+Importante!!!
+=============================================================
+Cuando montemos el NFS es importante decir la version de la misma si tenemos problemas montando el NFS
+
+ sudo mount -o nfsvers=3 $IP:/home/vulnix /mnt/yoyo/ -nolock
+
+Si monta con un id que no tenemos o necesita un usuario en especifico 
+adduser <user>                 ---- si lo queremos borrar despues el usuario  deluser <user>
+Despues vamos al /etc/passwd y cambiamos el id al que queremos

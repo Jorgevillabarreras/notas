@@ -1,0 +1,20 @@
+Enumerar Finger normalmente en puerto 79
+
+
+Script de Nmap
+==================================================================
+nmap --script finger 192.168.0.99 -p 79
+
+
+
+Enumerar manualmente
+====================================================================
+finger sshd@$IP
+
+
+Bash loop para encontrar usuarios
+==================================================================
+for name in $(cat /usr/share/wordlists/metasploit/unix_users.txt); do finger $name@$IP; done >valid_users.txt
+
+
+

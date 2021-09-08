@@ -1,0 +1,16 @@
+Enumerar NFS
+================================
+
+Nmap script
+==================================================
+sudo nmap --script nfs-ls,nfs-showmount,nfs-statfs $IP
+
+Ensenar NFS
+==================================================
+sudo showmount -e $IP
+
+Montar NFS en nuestra maquina
+====================================================
+mkdir -p /mnt/home/bob
+mount -t nfs <NFS SERVER IP>:/home/bob /mnt/home/bob -o nolock
+cd /mnt/home/bob && ls -al

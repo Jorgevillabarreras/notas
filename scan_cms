@@ -1,0 +1,34 @@
+
+Wpscan - scan for Wordpress
+====================================================
+[+] Enumerate all plugins
+
+sudo wpscan --url <ip> -e ap  
+
+[+] Brute-Force Wpscan
+
+wpscan --url <ip> -U user.txt -P password.txt
+
+[+] Wordpress have password store on /var/www/html/wordpress/wp-config.php
+
+
+
+
+
+Joonscan - scanner for joomla
+============================================================
+git clone https://github.com/rezasp/joomscan.git or sudo apt install joomscan
+
+[+] Basic command for joomscan
+
+sudo joomscan --url http://192.168.3.159
+
+
+Droopescan - scanner for drupal
+=====================================================================
+https://github.com/droope/droopescan.git
+
+[+] sudo droopescan scan drupal -u http://example.org/ -t 32
+
+
+
