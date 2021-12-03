@@ -1,0 +1,22 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>DOM XSS</title>
+</head><body><span style="font-size: 16pt"><span style="background-color: #00ffff">La mayor direncia de los otros XSS es que <b>el DOM XSS corre en el cliente </b>significa que <b>el payload no es procesado por el server solo por web browser de la victima</b><br/>
+</span><span style="background-color: #00ffff">Los DOM XSS pueden bypass lo mecanismos de defensa que tienen los browsers como Chrome</span><br/>
+<br/>
+</span><img src="image.png"/><br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">Sin que la pagina refresh va a actualizar la cantidad.Esto es gracias a una funcion de javascript</span><br/>
+</span><img src="image 2.png"/><br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">Para probar si hay un DOM XSS hacemos esta prueba</span><br/>
+</span><img src="image 3.png"/><br/>
+<img src="image 4.png"/><br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">En vez de payload escribimos </span><br/>
+<img src="image 6.png"/><br/>
+<b><span style="background-color: #ffff00">&gt;&lt;svg/onload=alert(1337)&gt;</span></b><br/>
+<img src="image 5.png"/><br/>
+<span style="background-color: #00ffff">Nos sale el pop-up en la pagina</span><br/>
+<br/>
+<br/>
+</span><br/>
+</body></html>

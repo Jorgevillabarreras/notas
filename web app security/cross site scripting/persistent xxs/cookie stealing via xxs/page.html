@@ -1,0 +1,37 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Cookie stealing via XXS</title>
+</head><body><br/>
+<span style="background-color: #00ffff"><span style="font-size: 16pt">Como aprendido en modulo de Web Applications, Javascript si no tienen el <b>flag HttpOnly</b>activado<br/>
+En muchos casos <b>robarse un Cookie significa robarse la session del usuario!!<br/>
+</b><b><br/>
+</b>Por Ejemplo:<br/>
+</span></span><span style="font-size: 16pt"><span style="background-color: #00ffff">Podemos ensenar el cookie que esta corriendo con</span><br/>
+<br/>
+<span style="background-color: #ffff00"><b>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</b><br/>
+<img src="image.png"/><br/>
+<br/>
+</span></span><br/>
+<div style="text-align: left"><span style="font-family: arial"><span style="font-size: 16pt"><span style="background-color: #00ffff">Con el siguiente código, puede enviar contenido de cookies a un sitio controlado por un atacante</span>.<br/>
+<br/>
+</span></span></div><span style="font-size: 16pt"><img src="image 2.png"/><br/>
+</span><span style="font-size: 16pt"><span style="background-color: #00ffff">El script genera un objeto de imagen y apunta su source a un script en el servidor del atacante (attacker.site). </span></span><br/>
+<br/>
+<img src="image 3.png"/><br/>
+<br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">El navegador no puede saber de ante mano si la fuente es una imagen, por lo que carga y ejecuta el script, <br/>
+incluso sin mostrando cualquier imagen! Por tanto, la cookie se envía al Attacker.site. <br/>
+<br/>
+</span><span style="background-color: #00ffff">The </span><span style="background-color: #ffa300">log.php</span><span style="background-color: #00ffff">script saves the cookie in a text file on the attacker.site: <br/>
+</span></span><img src="image 4.png"/><br/>
+<br/>
+<br/>
+<br/>
+<span style="font-size: 16pt"><br/>
+<br/>
+<br/>
+<br/>
+<span style="background-color: #ffff00"><br/>
+<br/>
+</span></span></body></html>

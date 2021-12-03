@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+<version>6</version>
+<dict>
+  <key>expanded</key><true/>
+  <key>duplicate_of</key><string>5605e934-08f6-4fec-b1e9-39ba2956b7ff</string>
+  <key>nodeid</key><string>95b6ba87-7ffa-44f0-84e9-ff206c20db46</string>
+  <key>modified_time</key><integer>1611196911</integer>
+  <key>content_type</key><string>text/xhtml+xml</string>
+  <key>created_time</key><integer>1603553968</integer>
+  <key>info_sort_dir</key><integer>1</integer>
+  <key>icon</key><string>x.png</string>
+  <key>title</key><string>Cross Site Scripting</string>
+  <key>version</key><integer>6</integer>
+  <key>order</key><integer>0</integer>
+  <key>info_sort</key><string>order</string>
+</dict>
+</node>

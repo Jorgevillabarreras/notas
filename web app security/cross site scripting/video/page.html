@@ -1,0 +1,40 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Video</title>
+</head><body><b><span style="background-color: #00ffff"><span style="font-size: 16pt">Refleted XSS</span></span></b><br/>
+<img src="image.png"/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<span style="background-color: #00ffff"><span style="font-size: 16pt">Primero buscamos en la applicacion donde podemos hacer user input.<br/>
+Arriba a la derecha vemos un search field <br/>
+</span></span><span style="background-color: #00ffff"><span style="font-size: 16pt">Escribimos cualquier cosa para ver como funciona y como vemos que la pagina sale en el output lo que escribimos</span></span><br/>
+<img src="image 2.png"/><br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">Hay que mirar si la pagina lo sanitiza<br/>
+lo que hacemos es que escribimos un codigo html a ver como la pagina nos envia el resultado<br/>
+</span><span style="background-color: #00ffff">escribimos</span><b><span style="background-color: #ffff00">&lt;h1&gt; Hello&lt;/h1&gt;.</span></b><span style="background-color: #00ffff"><br/>
+</span></span><span style="font-size: 16pt"><span style="background-color: #00ffff">miramos que sale</span></span><br/>
+<img src="image 3.png"/><br/>
+<span style="background-color: #00ffff"><span style="font-size: 16pt">Como podemos ver el website no sanitiza el mensaje podemos ver que salio en la pantalla el codigo html que escribimos<br/>
+Vamos a source code de la pagina y vemos que el comando que escribimos esta ahi y funcionando!<br/>
+esto es bueno para nosotros<br/>
+El proximo paso es verificar si podemos inyectar un codigo javascript<br/>
+</span></span><span style="font-size: 16pt"><b><span style="background-color: #ffff00">&lt;script&gt;alert('XSS');&lt;/script&gt;<br/>
+</span></b><span style="background-color: #00ffff">si el browser lo acepta nos aparecera un display box en el browser<br/>
+<img src="image 4.png"/><br/>
+Perfecto funciono!!Esto significa que la applicacion no sanitiza nada de nuestro input y es vulnerable a <b>Refleted XXS<br/>
+</b>ya que sabemos que funciona le vamos a decir al browser que nos printee los <b>cookies.<br/>
+</b></span><b><span style="background-color: #ffff00">&lt;script&gt;alert(document.cookie)&lt;/script&gt;<br/>
+</span><img src="image 5.png"/><span style="background-color: #00ffff"><br/>
+</span><span style="background-color: #00ffff"><br/>
+</span></b><span style="background-color: #00ffff"><br/>
+<br/>
+</span></span><br/>
+<br/>
+<br/>
+<br/>
+</body></html>

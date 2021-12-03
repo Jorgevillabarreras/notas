@@ -1,0 +1,40 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Probar si hay XXS</title>
+</head><body><b><span style="font-size: 16pt"><span style="background-color: #ffa300">Para encontrar un XSS tenemos que mirar todo el user input y probar y mirar si sale en algun parte de la pagina</span><br/>
+<br/>
+</span></b><img src="image.png"/><br/>
+<br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">En este ejemplo, el prametro de search es sometido mediante un form y si refleja en el output(Reflection point)<br/>
+</span><span style="background-color: #00ffff">Hay que tomar en cuenta que el search string lo pasa al web app mediente un GET</span><br/>
+<br/>
+<img src="image 2.png"/><br/>
+<br/>
+<span style="background-color: #00ffff">Despues de encontrar un reflection point,tenemos que entender si podemos injectar codifo de HTML y ver si de alguna manera se ensena en el output de la pagina<br/>
+Podemos usar cualquier valido HTML tag para tratar de entenderlo y ver si llega a la pagina<br/>
+Mirar el source de la pagina ayuda ver como hacer un payload para el XXS<br/>
+<br/>
+</span></span><span style="font-size: 16pt"><span style="background-color: #00ffff">Muchas veces es solo injectar cualquier codifo HTML que no se danino como</span></span><br/>
+<span style="background-color: #ffff00"><span style="font-size: 16pt">&lt;i&gt;, &lt;pre&gt; o &lt;plaintext&gt;</span></span><br/>
+<br/>
+<img src="image 3.png"/><br/>
+<br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">En este ejemplo con tan solo injectar &lt;i&gt; tag y el test string esta en italic en el output,asi que codigo HTML fue interpretado</span></span><br/>
+<br/>
+<img src="image 4.png"/><br/>
+<br/>
+<br/>
+<span style="font-size: 16pt"><span style="background-color: #00ffff">Para probar el XXS,Podemos injectar un codigo valido de HTML/Javacript code como<br/>
+</span><span style="background-color: #ffff00"><br/>
+<br/>
+<img src="image 5.png"/><br/>
+<br/>
+</span><span style="background-color: #00ffff">Para atacar la vulnerabilidad de XXS que encontramos,Necesitamos saber el tipo de XXS estamos haciendo.<br/>
+</span></span><span style="font-size: 16pt"><span style="background-color: #00ffff">XXS pueden ser</span></span><ul><span style="font-size: 16pt"><b><span style="background-color: #00ffff"><li>Reflected</li>
+<li>Persistent</li>
+</span></b></span><li><span style="font-size: 16pt"><b><span style="background-color: #00ffff">DOM Based</span></b></span></li>
+</ul>
+<br/>
+<br/>
+</body></html>

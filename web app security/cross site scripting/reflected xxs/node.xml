@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+<version>6</version>
+<dict>
+  <key>duplicate_of</key><string>a0da76fc-1e85-43e8-8323-a4e54b841bbc</string>
+  <key>nodeid</key><string>b76628c6-9ad8-42b6-8479-11b29dc3104f</string>
+  <key>modified_time</key><integer>1622009230</integer>
+  <key>content_type</key><string>text/xhtml+xml</string>
+  <key>created_time</key><integer>1603556557</integer>
+  <key>info_sort_dir</key><integer>1</integer>
+  <key>icon</key><string>x.png</string>
+  <key>title</key><string>Reflected XXS</string>
+  <key>version</key><integer>6</integer>
+  <key>order</key><integer>1</integer>
+  <key>info_sort</key><string>order</string>
+</dict>
+</node>
